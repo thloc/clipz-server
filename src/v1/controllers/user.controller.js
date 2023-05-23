@@ -1,6 +1,7 @@
 'use strict';
 
 const createError = require('http-errors');
+const mongoose = require('mongoose');
 
 const User = require('../models/user.model');
 const { userValidation, loginValidation } = require('../utils/validation');
@@ -80,5 +81,26 @@ exports.logout = (req, res, next) => {
     })
   } catch (error) {
     next(error)
+  }
+}
+
+exports.getInfo = async (req, res) => {
+  try {
+    const userInfo = await User.findById(req.params.userId);
+
+    if (!userInfo) {
+      return res.status(400).send({ message: "Could not find user" });
+    }
+
+    return res.status(200).json({
+      status: 'success',
+      user: userInfo
+    });
+  } catch (error) {
+    if (error instanceof mongoose.Error.CastError) {
+      return res.status(400).send({ message: "Could not find user" });
+    } else {
+      console.log('Lỗi:', error);
+    }
   }
 }

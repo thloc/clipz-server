@@ -10,5 +10,6 @@ const { verifyAccessToken } = require('../utils/jwt_service');
 router.post('/register', userController.createUser);
 router.post('/login', userController.login);
 router.get('/logout', verifyAccessToken, userController.logout);
+router.get('/detail/:userId', verifyAccessToken, userController.getInfo);
 
 module.exports = router;
