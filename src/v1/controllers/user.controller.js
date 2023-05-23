@@ -62,7 +62,8 @@ exports.login = async (req, res, next) => {
       status: 'success',
       token: accessToken,
       refereshToken: refereshToken,
-      displayName: user.displayName || ""
+      displayName: user.displayName || "",
+      account_id: user._id
     });
   } catch (error) {
     next(error)
