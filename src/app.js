@@ -27,7 +27,7 @@ class AppController {
  
   routes() {
     this.app.use(cors({
-      origin: 'http://127.0.0.1:4000',
+      origin: 'http://localhost:4200',
       methods: ['POST', 'GET', 'PUT', 'DELETE']
     }));
 

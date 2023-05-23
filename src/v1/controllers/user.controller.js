@@ -28,8 +28,7 @@ exports.createUser = async (req, res, next) => {
     const userSaved = await user.save();
 
     return res.status(200).json({
-      status: 'success',
-      element: userSaved
+      status: 'success'
     });
   } catch (error) {
     next(error);

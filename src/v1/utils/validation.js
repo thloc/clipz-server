@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 const userValidation = data => {
   const userShema = Joi.object({
-    email: Joi.string().pattern(new RegExp('gmail.com')).email().lowercase().required(),
+    email: Joi.string().pattern(new RegExp('.com')).email().lowercase().required(),
     password: Joi.string().min(4).max(32).required(),
     age: Joi.number(),
     name: Joi.string(),
@@ -17,7 +17,7 @@ const userValidation = data => {
 
 const loginValidation = data => {
   const userShema = Joi.object({
-    email: Joi.string().pattern(new RegExp('gmail.com')).email().lowercase().required(),
+    email: Joi.string().pattern(new RegExp('.com')).email().lowercase().required(),
     password: Joi.string().min(4).max(32).required(),
   });
   return userShema.validate(data);
