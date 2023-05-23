@@ -32,14 +32,11 @@ class AppController {
     }));
 
     this.app.use(require('./v1/routes/index.router'));
-    this.app.use(require('./v1/routes/user.router'));
+    this.app.use('/users', require('./v1/routes/user.router'));
   }
 
   errors() {
     this.app.use((req, res, next) => {
-      // const error = new Error("Not found");
-      // error.status = 404;
-      // next(error); 
       next(createError.NotFound('This route does not exist.'));
     });
 
